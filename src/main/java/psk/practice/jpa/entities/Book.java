@@ -3,12 +3,10 @@ package psk.practice.jpa.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -20,4 +18,7 @@ public class Book implements Serializable {
 
     @Size(max = 100)
     private String title;
+
+    @ManyToMany
+    private List<Author> authors;
 }
