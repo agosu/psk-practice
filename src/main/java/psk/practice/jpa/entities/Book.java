@@ -17,6 +17,7 @@ public class Book implements Serializable {
     private Integer id;
 
     @Size(max = 100)
+    @Column(name = "NAME")
     private String title;
 
     @ManyToMany
