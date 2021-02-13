@@ -58,7 +58,7 @@
           <artifactId>mybatis-generator-maven-plugin</artifactId>
           <version>1.4.0</version>
           <configuration>
-            <contexts>DB</contexts>
+            <contexts>BooksDB</contexts>
             <verbose>true</verbose>
           </configuration>
           <executions>
