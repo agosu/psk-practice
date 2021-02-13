@@ -9,7 +9,7 @@
                         connectionURL="jdbc:h2:~/h2database/BooksDB;AUTO_SERVER=TRUE" />
 
         <javaModelGenerator targetPackage="psk.practice.mybatis.model" targetProject=".\src\main\java" />
-        <sqlMapGenerator targetPackage="mybatis" targetProject=".\src\main\resources" />
+        <sqlMapGenerator targetPackage="psk.practice.mybatis.mapper" targetProject=".\src\main\java" />
         <javaClientGenerator type="XMLMAPPER" targetPackage="psk.practice.mybatis.dao" targetProject=".\src\main\java" />
 
         <table schema="public" tableName="book">
