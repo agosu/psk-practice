@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Characters in #{jpaCharactersForBook.book.title} book:</h2>
+    <ol>
+        <ui:repeat value="#{jpaCharactersForBook.book.characters}" var="character">
+            <li>#{character.firstname} #{character.lastname}</li>
+        </ui:repeat>
+    </ol>
+</h:body>
+</html>

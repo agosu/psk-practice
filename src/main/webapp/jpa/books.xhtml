@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head/>
+<h:body>
+    <h2>Books:</h2>
+    <ol>
+        <ui:repeat value="#{jpaBooks.allBooks}" var="book">
+            <li><h:link value="#{book.title}" outcome="characters?bookId=#{book.id}"/></li>
+            <ul>
+                <ui:repeat value="#{jpaBooks.getCharactersByBook(book.id)}" var="character">
+                    <li>#{character.firstname}</li>
+                </ui:repeat>
+            </ul>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText value="#{jpaBooks.bookToCreate.title}" required="true" />
+        <h:commandButton value="Add new book" action="#{jpaBooks.createBook}" />
+    </h:form>
+</h:body>
+</html>

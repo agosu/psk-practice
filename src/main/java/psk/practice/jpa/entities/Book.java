@@ -9,6 +9,9 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "findAllBooks", query = "select a from Book as a")
+})
 @Getter @Setter
 public class Book implements Serializable {
 
@@ -22,4 +25,7 @@ public class Book implements Serializable {
 
     @ManyToMany
     private List<Author> authors;
+
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    private List<Character> characters;
 }

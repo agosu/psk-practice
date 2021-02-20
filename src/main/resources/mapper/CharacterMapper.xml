@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="psk.practice.mybatis.dao.CharacterMapper">
-  <resultMap id="BaseResultMap" type="psk.practice.mybatis.model.Character">
+  <resultMap id="CharacterMap" type="psk.practice.mybatis.model.Character">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="FIRSTNAME" jdbcType="VARCHAR" property="firstname" />
     <result column="LASTNAME" jdbcType="VARCHAR" property="lastname" />
     <result column="BOOK_ID" jdbcType="INTEGER" property="bookId" />
+    <!--<association property="book" javaType="Book">
+      <id property="id" column="id" />
+      <result property="firstname" column="firstname" />
+      <result property="lastname" column="lastname" />
+    </association>-->
+  </resultMap>
+  <resultMap id="basicCharacter" type="Character">
+    <id property="id" column="id" />
+    <result property="firstname" column="firstname" />
+    <result property="lastname" column="lastname" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from PUBLIC.CHARACTER
@@ -14,23 +24,28 @@
   <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="psk.practice.mybatis.model.Character" useGeneratedKeys="true">
     insert into PUBLIC.CHARACTER (FIRSTNAME, LASTNAME, BOOK_ID
       )
-    values (#{firstname,jdbcType=VARCHAR}, #{lastname,jdbcType=VARCHAR}, #{bookId,jdbcType=INTEGER}
+    values (#{firstname,jdbcType=VARCHAR}, #{lastname,jdbcType=VARCHAR}, #{book,jdbcType=INTEGER}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="psk.practice.mybatis.model.Character">
     update PUBLIC.CHARACTER
     set FIRSTNAME = #{firstname,jdbcType=VARCHAR},
       LASTNAME = #{lastname,jdbcType=VARCHAR},
-      BOOK_ID = #{bookId,jdbcType=INTEGER}
+      BOOK_ID = #{book,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select ID, FIRSTNAME, LASTNAME, BOOK_ID
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="CharacterMap">
+    select *
     from PUBLIC.CHARACTER
     where ID = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select ID, FIRSTNAME, LASTNAME, BOOK_ID
+  <select id="selectAll" resultMap="CharacterMap">
+    select *
+    from PUBLIC.CHARACTER;
+  </select>
+  <select id="selectCharactersByBook" parameterType="java.lang.Integer" resultMap="basicCharacter">
+    select *
     from PUBLIC.CHARACTER
+    where book_id = #{bookId}
   </select>
 </mapper>

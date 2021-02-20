@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="psk.practice.mybatis.dao.BookMapper">
+  <resultMap id="BookMap" type="psk.practice.mybatis.model.Book">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <!--<collection property="characters" select="selectCharactersByBook" column="bookId">
+      <id property="id" column="id" />
+      <result property="firstname" column="firstname" />
+      <result property="lastname" column="lastname" />
+    </collection>-->
+  </resultMap>
+  <resultMap type="Book" id="resultBook">
+    <id property="id" column="id" />
+    <result property="name" column="name"/>
+  </resultMap>
+  <resultMap type="psk.practice.mybatis.model.Character" id="CharacterResult">
+    <association property="book" javaType="Book" column="book" select="selectByPrimaryKey" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from PUBLIC.BOOK
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="psk.practice.mybatis.model.Book" useGeneratedKeys="true">
+    insert into PUBLIC.BOOK (NAME)
+    values (#{name,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="psk.practice.mybatis.model.Book">
+    update PUBLIC.BOOK
+    set NAME = #{name,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BookMap">
+    select ID, NAME
+    from PUBLIC.BOOK
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BookMap">
+    select b.id, b.name
+    from PUBLIC.BOOK b
+    order by id
+  </select>
+  <select id="selectCharactersByBook" parameterType="java.lang.Integer" resultType="Character">
+    select *
+    from PUBLIC.CHARACTER
+    where book_id = #{bookId}
+  </select>
+</mapper>
