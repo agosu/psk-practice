@@ -7,9 +7,9 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head/>
 <h:body>
-    <h2>Characters in #{batisCharactersForBook.book.name} book:</h2>
+    <h2>Characters in #{mbCharactersForBook.book.title} book:</h2>
     <ol>
-        <ui:repeat value="#{batisCharactersForBook.book.characters}" var="character">
+        <ui:repeat value="#{mbCharactersForBook.book.characters}" var="character">
             <li>#{character.firstname} #{character.lastname}</li>
         </ui:repeat>
     </ol>

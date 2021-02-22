@@ -8,7 +8,7 @@
     <h2>Books:</h2>
     <ol>
         <ui:repeat value="#{mbBooks.allBooks}" var="book">
-            <li><h:link value="#{book.name}" outcome="characters?bookId=#{book.id}"/></li>
+            <li><h:link value="#{book.title}" outcome="characters?bookId=#{book.id}"/></li>
             <ul>
                 <ui:repeat value="#{mbBooks.getCharactersByBook(book.id)}" var="character">
                     <li>#{character.firstname}</li>
@@ -17,7 +17,7 @@
         </ui:repeat>
     </ol>
     <h:form>
-        <h:inputText value="#{mbBooks.bookToCreate.name}" required="true" />
+        <h:inputText value="#{mbBooks.bookToCreate.title}" required="true" />
         <h:commandButton value="Add new book" action="#{mbBooks.createBook}" />
     </h:form>
 </h:body>

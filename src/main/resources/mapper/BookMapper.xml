@@ -3,7 +3,7 @@
 <mapper namespace="psk.practice.mybatis.dao.BookMapper">
   <resultMap id="BookMap" type="psk.practice.mybatis.model.Book">
     <id column="ID" jdbcType="INTEGER" property="id" />
-    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="NAME" jdbcType="VARCHAR" property="title" />
     <!--<collection property="characters" select="selectCharactersByBook" column="bookId">
       <id property="id" column="id" />
       <result property="firstname" column="firstname" />
@@ -12,7 +12,7 @@
   </resultMap>
   <resultMap type="Book" id="resultBook">
     <id property="id" column="id" />
-    <result property="name" column="name"/>
+    <result property="title" column="name"/>
   </resultMap>
   <resultMap type="psk.practice.mybatis.model.Character" id="CharacterResult">
     <association property="book" javaType="Book" column="book" select="selectByPrimaryKey" />
@@ -24,11 +24,11 @@
   </delete>
   <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="psk.practice.mybatis.model.Book" useGeneratedKeys="true">
     insert into PUBLIC.BOOK (NAME)
-    values (#{name,jdbcType=VARCHAR})
+    values (#{title,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="psk.practice.mybatis.model.Book">
     update PUBLIC.BOOK
-    set NAME = #{name,jdbcType=VARCHAR}
+    set NAME = #{title,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BookMap">
