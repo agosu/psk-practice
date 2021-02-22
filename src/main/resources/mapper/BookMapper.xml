@@ -4,11 +4,7 @@
   <resultMap id="BookMap" type="psk.practice.mybatis.model.Book">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="NAME" jdbcType="VARCHAR" property="title" />
-    <!--<collection property="characters" select="selectCharactersByBook" column="bookId">
-      <id property="id" column="id" />
-      <result property="firstname" column="firstname" />
-      <result property="lastname" column="lastname" />
-    </collection>-->
+    <collection property="characters" select="selectCharactersByBook" column="id" javaType="ArrayList" ofType="Character" />
   </resultMap>
   <resultMap type="Book" id="resultBook">
     <id property="id" column="id" />
@@ -18,7 +14,6 @@
     <association property="book" javaType="Book" column="book" select="selectByPrimaryKey" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-
     delete from PUBLIC.BOOK
     where ID = #{id,jdbcType=INTEGER}
   </delete>
@@ -39,11 +34,11 @@
   <select id="selectAll" resultMap="BookMap">
     select b.id, b.name
     from PUBLIC.BOOK b
-    order by id
+    order by b.id
   </select>
   <select id="selectCharactersByBook" parameterType="java.lang.Integer" resultType="Character">
     select *
     from PUBLIC.CHARACTER
-    where book_id = #{bookId}
+    where book_id = #{id}
   </select>
 </mapper>

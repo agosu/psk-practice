@@ -10,7 +10,7 @@
         <ui:repeat value="#{mbBooks.allBooks}" var="book">
             <li><h:link value="#{book.title}" outcome="characters?bookId=#{book.id}"/></li>
             <ul>
-                <ui:repeat value="#{mbBooks.getCharactersByBook(book.id)}" var="character">
+                <ui:repeat value="#{book.characters}" var="character">
                     <li>#{character.firstname}</li>
                 </ui:repeat>
             </ul>
