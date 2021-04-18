@@ -6,7 +6,7 @@
     <result column="FIRSTNAME" jdbcType="VARCHAR" property="firstname" />
     <result column="LASTNAME" jdbcType="VARCHAR" property="lastname" />
     <result column="BOOK_ID" jdbcType="INTEGER" property="bookId" />
-    <association property="book" resultMap="psk.practice.mybatis.dao.BookMapper.BookMap" columnPrefix="book_"/>
+    <association property="book1" resultMap="psk.practice.mybatis.dao.BookMapper.BookMap" columnPrefix="book_"/>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from PUBLIC.CHARACTER

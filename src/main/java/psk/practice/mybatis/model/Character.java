@@ -15,5 +15,5 @@ public class Character {
     private Integer bookId;
 
     //TODO Black magic
-    //private Book book;
+    private Book book1;
 }
