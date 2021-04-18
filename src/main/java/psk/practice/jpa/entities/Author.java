@@ -24,4 +24,8 @@ public class Author implements Serializable {
 
     @ManyToMany(mappedBy = "authors")
     private List<Book> books;
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 }

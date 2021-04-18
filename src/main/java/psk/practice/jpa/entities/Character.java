@@ -22,4 +22,8 @@ public class Character {
 
     @ManyToOne
     private Book book;
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 }

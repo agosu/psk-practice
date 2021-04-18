@@ -8,7 +8,7 @@
     <h2>Books:</h2>
     <ol>
         <ui:repeat value="#{jpaBooks.allBooks}" var="book">
-            <li><h:link value="#{book.title}" outcome="characters?bookId=#{book.id}"/></li>
+            <li><h:link value="#{book.title}" outcome="characters?bookId=#{book.id}"/> <br/> <h:link value="Rename" outcome="rename?bookId=#{book.id}"/></li>
             <ul>
                 <ui:repeat value="#{jpaBooks.getCharactersByBook(book.id)}" var="character">
                     <li>#{character.firstname}</li>

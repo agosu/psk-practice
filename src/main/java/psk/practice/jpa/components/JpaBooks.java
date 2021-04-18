@@ -28,6 +28,9 @@ public class JpaBooks {
     @Getter @Setter
     private Book bookToCreate = new Book();
 
+    @Getter @Setter
+    private Integer renameId;
+
     @PostConstruct
     public void init() {
         this.loadAllBooks();

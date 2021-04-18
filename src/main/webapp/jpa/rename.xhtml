@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Rename #{jpaRenameBook.book.title} book</h2>
+    <h:form>
+        <h:inputText value="#{jpaRenameBook.book.title}" required="true" />
+        <h:commandButton value="Rename the book" action="#{jpaRenameBook.renameBook()}">
+            <f:param name="bookId" value="#{jpaRenameBook.book.id}" />
+        </h:commandButton>
+        <h:outputText value="The book was already renamed by another user. Try again if you still want to rename it." rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+    </h:form>
+</h:body>
+</html>

@@ -34,4 +34,8 @@ public class BookDAO {
     public Book findOne(Integer id) {
         return em.find(Book.class, id);
     }
+
+    public Book update(Book book) {
+        return em.merge(book);
+    }
 }

@@ -28,4 +28,8 @@ public class Book implements Serializable {
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<Character> characters;
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 }
