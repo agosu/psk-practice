@@ -4,7 +4,6 @@ import psk.practice.jpa.entities.Character;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import java.util.List;
 

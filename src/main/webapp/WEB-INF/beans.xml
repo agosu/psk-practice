@@ -9,4 +9,7 @@
     <interceptors>
         <class>psk.practice.interceptors.MethodLogger</class>
     </interceptors>
+    <decorators>
+        <class>psk.practice.decorators.TitleCensorDecorator</class>
+    </decorators>
 </beans>
