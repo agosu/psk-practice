@@ -1,5 +1,6 @@
 package psk.practice.jpa.components;
 
+import psk.practice.interceptors.Logged;
 import psk.practice.jpa.services.ReadingDaysGenerator;
 
 import javax.enterprise.context.SessionScoped;
@@ -21,6 +22,7 @@ public class MakeReadingGoal implements Serializable {
 
     private CompletableFuture<Integer> readingDaysGenerationTask = null;
 
+    @Logged
     public String makeReadingGoal() {
         Map<String, String> requestParameters = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         readingDaysGenerationTask = CompletableFuture.supplyAsync(() -> readingDaysGenerator.makeReadingGoal());

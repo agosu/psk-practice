@@ -2,6 +2,7 @@ package psk.practice.jpa.components;
 
 import lombok.Getter;
 import lombok.Setter;
+import psk.practice.interceptors.Logged;
 import psk.practice.jpa.dao.BookDAO;
 import psk.practice.jpa.dao.CharacterDAO;
 import psk.practice.jpa.entities.Book;
@@ -41,6 +42,7 @@ public class JpaBooks {
     }
 
     @Transactional
+    @Logged
     public String createBook() {
         bookDAO.persist(bookToCreate);
         return "/jpa/books?faces-redirect=true";
