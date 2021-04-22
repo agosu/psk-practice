@@ -15,5 +15,11 @@
         </h:commandButton>
         <h:outputText value="The book was already renamed by another user. Try again if you still want to rename it." rendered="#{param['error'] == 'optimistic-lock-exception'}" />
     </h:form>
+    <h:form>
+        <h:outputText value="#{makeReadingGoal.readingDaysGeneratorStatus}"/>
+        <h:commandButton value="Make a new book reading goal?" disabled="#{makeReadingGoal.makingGoal}" action="#{makeReadingGoal.makeReadingGoal()}">
+            <f:param name="bookId" value="#{jpaRenameBook.book.id}"/>
+        </h:commandButton>
+    </h:form>
 </h:body>
 </html>
