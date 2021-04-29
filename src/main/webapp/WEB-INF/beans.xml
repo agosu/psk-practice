@@ -12,4 +12,7 @@
     <decorators>
         <class>psk.practice.decorators.TitleCensorDecorator</class>
     </decorators>
+    <alternatives>
+        <class>psk.practice.qualifiers.FriendlyWelcomeImpl</class>
+    </alternatives>
 </beans>

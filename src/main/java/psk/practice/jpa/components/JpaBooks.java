@@ -9,14 +9,20 @@ import psk.practice.jpa.dao.BookDAO;
 import psk.practice.jpa.dao.CharacterDAO;
 import psk.practice.jpa.entities.Book;
 import psk.practice.jpa.entities.Character;
+import psk.practice.qualifiers.FormalWelcome;
+import psk.practice.qualifiers.FriendlyWelcome;
+import psk.practice.qualifiers.FriendlyWelcomeImpl;
+import psk.practice.qualifiers.Welcome;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Model
+@Dependent
 public class JpaBooks {
 
     @Inject
@@ -26,7 +32,11 @@ public class JpaBooks {
     private CharacterDAO characterDAO;
 
     @Inject
-    private SimpleTitle title;
+    private Title title;
+
+    @Inject //@FormalWelcome
+    //private FriendlyWelcomeImpl welcome;
+    private Welcome welcome;
 
     @Getter
     List<Book> allBooks;
@@ -52,6 +62,10 @@ public class JpaBooks {
         title.logTitle(bookToCreate.getTitle());
         bookDAO.persist(bookToCreate);
         return "/jpa/books?faces-redirect=true";
+    }
+
+    public String getWelcome() {
+        return welcome.getWelcome();
     }
 
     public List<Character> getCharactersByBook(Integer bookId) {

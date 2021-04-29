@@ -5,6 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head/>
 <h:body>
+    <h2>#{jpaBooks.getWelcome()}</h2>
     <h2>Books:</h2>
     <ol>
         <ui:repeat value="#{jpaBooks.allBooks}" var="book">
